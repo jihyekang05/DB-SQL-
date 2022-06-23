@@ -117,6 +117,8 @@ OR comm <> 0;
 SELECT TO_CHAR(hiredate,'yyyy-MM-DD')
 FROM emp;
 
+SELECT TO_CHAR(SYSDATE,'YYYY"년"MM"월"DD"일"')
+FROM dual;
 
 
 
