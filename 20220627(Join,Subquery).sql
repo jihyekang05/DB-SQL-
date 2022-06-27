@@ -307,3 +307,15 @@ FROM (SELECT *
         WHERE custid <=2) c, orders o
 WHERE c.custid = o.custid;
 
+--SELF JOIN (셀프조인)
+--자기 자신의 테이블에서 겹치는 데이터를 찾기 위한 방법
+
+--오라클 사용법
+SELECT *
+FROM emp a, emp b --약칭 필수
+WHERE a.mgr = b.empno;
+
+--ANSI 사용법
+SELECT b.empno, b.ename, a.empno, a.ename
+FROM emp a JOIN emp b
+ON a.mgr = b.empno;
