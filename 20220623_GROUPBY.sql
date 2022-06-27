@@ -76,83 +76,94 @@ HAVING count(*) >= 2;
 
 --5장 예제
 
+--책이름에 ‘축구’의 단어를 농구로 변경하여 책이름 조회
 SELECT REPLACE(bookname,'축구','농구')
 FROM book;
 
-SELECT UPPER(bookname),UPPER(publisher)
+--책 번호가 10번인 책의 이름과 출판사를 대문자로 변경하여 조회
+SELECT UPPER(bookname) as "bookname",UPPER(publisher) as "publisher"
 FROM book
 WHERE bookid = '10';
 
+--책이름의 글자수와 바이트 조회
 SELECT LENGTH(bookname),LENGTHB(bookname)
 FROM book;
 
+--박지성의 총 구매액 조회(박지성의 고객번호는 1번으로 놓고 작성)
 SELECT SUM(saleprice)
 FROM orders
-WHERE custid = '1';
+WHERE custid = 1;
 
-SELECT count(custid)
+--박지성이 구매한 도서의 수 조회(박지성의 고객번호는 1번으로 놓고 작성)
+SELECT count(*) --count()는 주로 괄호 안에 *을 넣어주는 것이 좋다.
 FROM orders
-WHERE custid = '1';
+WHERE custid = 1;
 
-SELECT count(bookname)
+--키트리서점 도서의 총 개수 조회
+SELECT count(*) "도서의 총 개수"
 FROM book;
 
+--키트리서점에 도서를 출고하는 출판사 조회 (중복제거)
 SELECT DISTINCT publisher
 FROM book;
 
+--대한미디어 출판사 책의 총 금액, 평균 금액 조회
 SELECT sum(price),avg(price)
-FROM book;
+FROM book
+WHERE publisher = '대한미디어';
 
-SELECT publisher,count(*),avg(price)
+--출판사별 책의 개수, 평균 금액 조회
+SELECT publisher,count(*) "책의 개수",avg(price) "평균금액"
 FROM book
 GROUP BY publisher;
 
+--김연아가 구매한 도서 총 금액 조회(김연아의 고객번호는 2번으로 놓고 작성)
 SELECT sum(saleprice)
 FROM orders
-WHERE custid = '2';
+WHERE custid = 2;
 
+--3권 구매한 고객의 총 구매 금액 조회
 SELECT custid,sum(saleprice)
 FROM orders
 GROUP BY custid
 HAVING count(*) = 3;
 
+--주문일을 기준으로 총 판매금액 조회
 SELECT orderdate,sum(saleprice)
 FROM orders
 GROUP BY orderdate;
 
 --숙제 101
-SELECT count(address)
+
+--대한민국에 사는 고객의 수를 조회
+SELECT count(*) "고객 수"
 FROM customer
 WHERE ADDRESS LIKE ('대한민국%');
 
+-- 출판사별 평균가격이 15000원 이하인 출판사 조회
 SELECT publisher,avg(price)
 FROM book
 GROUP BY publisher
 HAVING avg(price)<=15000;
 
-SELECT bookname,avg(price),max(price),min(price)
-FROM book
-GROUP BY bookname;
+--도서별 평균 판매금액, 최대 판매금액, 최소 판매금액 조회(문제 주의하기!!)
+SELECT bookid,avg(saleprice),max(saleprice),min(saleprice)
+FROM orders
+GROUP BY bookid;
 
-SELECT custid,count(bookid)
+--고객별 주문한 수량 조회
+SELECT custid,count(*) "주문한 수량"
 FROM orders
 GROUP BY custid;
 
+--고객별 주문한 총 금액이 20000원 이상인 고객의 번호 앞에 (VIP) 단어 붙여 조회
 SELECT custid ||'VIP'
 FROM orders
 GROUP BY custid
 HAVING sum(saleprice) >= 20000;
 
-SELECT bookid
+--도서별 가장 많이 주문한 도서 순서로 정렬하여 조회 (도서번호만 나와도 됨)
+SELECT bookid, count(*)
 from orders
 GROUP BY bookid
-ORDER BY count(bookid) DESC;
-
-
-
-
-
-
-
-
-
+ORDER BY count(*) DESC, bookid ASC;
