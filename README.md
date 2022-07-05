@@ -21,7 +21,12 @@
 * SQL의 종류
   ---
   * DDL (Data Definition Language) : 데이터 정의어
+   > create, alter, drop, rename, truncate
   * DML (Data Manipulation Language) : 데이터 조작어
+   > insert, update, delete
   * DCL (Data Control Language) : 데이터 제의어
+   > grant, revoke
   * DQL (Data Query Language) : 데이터 질의어
+   > select
   * TCL (Transaction Control Language) : 트랜잭션 제어어
+   > commit, rollback
