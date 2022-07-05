@@ -31,7 +31,7 @@
   * TCL (Transaction Control Language) : 트랜잭션 제어어
    > commit, rollback
 
-* DML - SELECT
+* SELECT(DML or DQL)
   ---
   * SELECT는 SQL 중에 가장 중요한 데이터 조작어로, 데이터를 효과적으로 검색/조회하는 SQL이다.
   * DQL이라고 세분화하기도 한다.
