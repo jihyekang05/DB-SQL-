@@ -1,4 +1,11 @@
 
+--암호화
+--양방향 암호화 방식(키가 있어서 해킹에 노출되어있다.)
+--대칭키 방식(AES): 암호화,복화할때 같은 키 사용, 빠르지만 보안에 취약하다.
+--공개키(비대칭키)(RSA): 주로 사용, 암호화와 할때는 공개키, 복호화할때는 개인키 사용
+
+--단방향 암호화 방식
+
 CREATE OR REPLACE PACKAGE CRYPTO
 IS
     FUNCTION ENCRYPT (input_string IN VARCHAR2
