@@ -1,0 +1,51 @@
+CREATE TABLE sql_test_a
+( 
+    ID         VARCHAR(4000), 
+    FIRST_NAME VARCHAR(200), 
+    LAST_NAME  VARCHAR(200) 
+); 
+
+INSERT INTO sql_test_a (ID, FIRST_NAME, LAST_NAME) VALUES ('1', 'John', 'Snow'); 
+
+INSERT INTO sql_test_a (ID, FIRST_NAME, LAST_NAME) VALUES ('2', 'Mike', 'Tyson'); 
+
+INSERT INTO sql_test_a (ID, FIRST_NAME, LAST_NAME) VALUES ('3', 'Bill', 'Keaton'); 
+
+INSERT INTO sql_test_a (ID, FIRST_NAME, LAST_NAME) VALUES ('4', 'Greg', 'Mercury'); 
+
+INSERT INTO sql_test_a (ID, FIRST_NAME, LAST_NAME) VALUES ('5', 'Steve', 'Jobs'); 
+
+INSERT INTO sql_test_a (ID, FIRST_NAME, LAST_NAME) VALUES ('6', 'Johhny', 'Depp');
+
+
+CREATE TABLE sql_test_a2
+( 
+    ID         VARCHAR(4000), 
+    FIRST_NAME VARCHAR(200), 
+    LAST_NAME  VARCHAR(200) 
+); 
+
+
+INSERT INTO sql_test_a2(ID, FIRST_NAME, LAST_NAME) VALUES ('11', 'aa', 'Snow'); 
+
+INSERT INTO sql_test_a2(ID, FIRST_NAME, LAST_NAME) VALUES ('22', 'bb', 'Tyson'); 
+
+INSERT INTO sql_test_a2(ID, FIRST_NAME, LAST_NAME) VALUES ('33', 'cc', 'Keaton'); 
+
+INSERT INTO sql_test_a2(ID, FIRST_NAME, LAST_NAME) VALUES ('44', 'dd', 'Mercury'); 
+
+INSERT INTO sql_test_a2(ID, FIRST_NAME, LAST_NAME) VALUES ('55', 'ee', 'Jobs'); 
+
+INSERT INTO sql_test_a2(ID, FIRST_NAME, LAST_NAME) VALUES ('66', 'ff', 'Depp');
+
+
+create procedure prac AS
+--BEGIN
+   --DELETE FROM sql_test_a WHERE FIRST_NAME = 'John';
+   DELETE FROM sql_test_a;
+   
+    INSERT INTO sql_test_a
+    SELECT * FROM sql_test_a2;
+--END prac;
+GO
+
