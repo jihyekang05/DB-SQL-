@@ -1,0 +1,11 @@
+create procedure KAPDB.dbo.USP_DATA_MANAGE_COPY_ISSUEINFOTABLE
+AS
+BEGIN
+--old데이터 삭제 ->  bond.dbo.BOND11MASTER 전체 데이터를 old db로 옮기기
+	DELETE FROM bond.dbo.BOND11MASTER_old
+
+	DELETE FROM kbpdb.dbo.tbmst_bond_old
+END 
+
+
+
